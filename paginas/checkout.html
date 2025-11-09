@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mueblería España - Sobre Nosotros</title>
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- CSS -->
-   <link rel="stylesheet" href="../estilos/global.css">
-  <link rel="stylesheet" href="../estilos/nosotros.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design System CSS (SIEMPRE PRIMERO) -->
+    <link rel="stylesheet" href="/estilos/global.css">
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="/estilos/carrito.css">
+
+    <title>Checkout</title>
+
 </head>
 <body>
-
     <!-- ========================================= -->
     <!-- NAVBAR PRINCIPAL (Sticky, con búsqueda) -->
     <!-- ========================================= -->
@@ -36,25 +39,23 @@
                 </button>
 
                 <!-- Logo/Brand -->
-                <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
                     <img src="/assets/mundo.png" alt="Logo Mueblería España" height="30" class="me-2">
                     Mueblería España
                 </a>
 
                 <!-- Menú Desktop -->
                 <div class="collapse navbar-collapse" id="mainNavbarDesktop">
-
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/paginas/nosotros.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="/paginas/nosotros.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/paginas/contacto.html">Contacto</a>
+                            <a class="nav-link active" href="/paginas/contacto.html">Contacto</a>
                         </li>
-
                     </ul>
                     
                     <!-- Barra de búsqueda (Desktop) -->
@@ -65,13 +66,11 @@
                     
                      <!-- Iconos de acción (Desktop) -->
                     <ul class="navbar-nav">
-
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="/paginas/carrito.html" aria-label="Carrito de compras">
                                 <i class="bi bi-cart-fill fs-4"></i>
                                 <!-- BADGE OCULTO DE NUM DE ITEMS DEL CARRITO - Desktop con d-none -->
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
-                                    2
                                     <span class="visually-hidden">productos en el carrito</span>
                                 </span>
                             </a>
@@ -88,7 +87,7 @@
                 <div class="d-flex align-items-center d-lg-none">
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item ms-3">
-                            <a class="nav-link position-relative" href="/paginas/carrito.html" aria-label="Carrito de compras">
+                            <a class="nav-link position-relative" href="#" aria-label="Carrito de compras">
                                 <i class="bi bi-cart-fill fs-3"></i>
                                     <!-- BADGE OCULTO DE NUM ITEMS DEL CARRITO - Movil con d-none -->
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
@@ -102,6 +101,10 @@
                                 <i class="bi bi-person-fill fs-3"></i>
                             </a>
                         </li>
+
+                          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                              <i class="bi bi-person-fill fs-3"></i>
+                          </a>
                       </li>
                     </ul>
                 </div>
@@ -124,11 +127,11 @@
                                 Salas
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paginas/salas.html">Ver todo</a></li>
-                                <li><a class="dropdown-item" href="/paginas/salas.html">Modulares de 4 piezas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/salas.html">Modulares de 5 piezas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/salas.html">Sofacamas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/salas.html">Reclinables</a></li>
+                                <li><a class="dropdown-item" href="/paginas/catalogo.html">Ver todo</a></li>
+                                <li><a class="dropdown-item" href="/paginas/catalogo.html">Modulares de 4 piezas</a></li>
+                                <li><a class="dropdown-item" href="/paginas/catalogo.html">Modulares de 5 piezas</a></li>
+                                <li><a class="dropdown-item" href="/paginas/catalogo.html">Sofacamas</a></li>
+                                <li><a class="dropdown-item" href="/paginas/catalogo.html">Reclinables</a></li>
                             </ul>
                         </li>
 
@@ -139,10 +142,10 @@
                                 Dormitorio
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paginas/dormitorios.html">Ver todo</a></li>
-                                <li><a class="dropdown-item" href="/paginas/dormitorios.html">Recámaras king size y matrimonial</a></li>
-                                <li><a class="dropdown-item" href="/paginas/dormitorios.html">Cabeceras</a></li>
-                                <li><a class="dropdown-item" href="/paginas/dormitorios.html">Bases</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Ver todo</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Recámaras king size y matrimonial</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Cabeceras</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Bases</a></li>
                             </ul>
                         </li>
 
@@ -153,37 +156,38 @@
                                 Comedores
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paginas/comedores.html">Ver todo</a></li>
-                                <li><a class="dropdown-item" href="/paginas/comedores.html">4 sillas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/comedores.html">6 sillas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/comedores.html">8 sillas</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Ver todo</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">4 sillas</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">6 sillas</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">8 sillas</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/paginas/roperos.html">Roperos</a>
+                            <a class="nav-link" href="paginas/catalogo.html">Roperos</a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link" href="/paginas/colchones.html">Colchones</a>
+                            <a class="nav-link" href="paginas/catalogo.html">Colchones</a>
                         </li>
 
                         <!-- Línea Blanca -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/paginas/catalogo.html" role="button" 
+                            <a class="nav-link dropdown-toggle" href="paginas/catalogo.html" role="button" 
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Línea blanca
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paginas/lineaBlanca.html">Ver todo</a></li>
-                                <li><a class="dropdown-item" href="/paginas/lineaBlanca.html">Lavadoras</a></li>
-                                <li><a class="dropdown-item" href="/paginas/lineaBlanca.html">Estufas</a></li>
-                                <li><a class="dropdown-item" href="/paginas/lineaBlanca.html">Refrigeradores</a></li>
-                                <li><a class="dropdown-item" href="/paginas/lineaBlanca.html">Microondas</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Ver todo</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Lavadoras</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Estufas</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Refrigeradores</a></li>
+                                <li><a class="dropdown-item" href="paginas/catalogo.html">Microondas</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link fw-bold text-danger" href="/paginas/ofertas.html">Ofertas</a>
+                            <a class="nav-link fw-bold text-danger" href="#ofertas">Ofertas</a>
                         </li>
                     </ul>
                 </div>
@@ -196,18 +200,14 @@
     <!-- ========================================= -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasProducts" 
          aria-labelledby="offcanvasProductsLabel">
-         
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasProductsLabel">PRODUCTOS</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button>
         </div>
-        
         <div class="offcanvas-body">
             <!-- Búsqueda en móvil -->
             <div class="px-3 mb-3">
-                
                 <form class="d-flex" role="search">
-                    
                     <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
                     <button class="btn btn-outline-primary" type="submit">Buscar</button>
                 </form>
@@ -222,11 +222,11 @@
                     </a>
                     <div class="collapse" id="collapseSalas">
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="/paginas/salas.html">Ver todo</a></li>
-                            <li><a href="/paginas/salas.html">Modulares de 4 piezas</a></li>
-                            <li><a href="/paginas/salas.html">Modulares de 5 piezas</a></li>
-                            <li><a href="/paginas/salas.html">Sofacamas</a></li>
-                            <li><a href="/paginas/salas.html">Reclinables</a></li>
+                            <li><a href="paginas/catalogo.html">Ver todo</a></li>
+                            <li><a href="paginas/catalogo.html">Modulares de 4 piezas</a></li>
+                            <li><a href="paginas/catalogo.html">Modulares de 5 piezas</a></li>
+                            <li><a href="paginas/catalogo.html">Sofacamas</a></li>
+                            <li><a href="paginas/catalogo.html">Reclinables</a></li>
                         </ul>
                     </div>
                 </li>
@@ -239,10 +239,10 @@
                     </a>
                     <div class="collapse" id="collapseDormitorio">
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="/paginas/dormitorios.html">Ver todo</a></li>
-                            <li><a href="/paginas/dormitorios.html">Recámaras king size y matrimonial</a></li>
-                            <li><a href="/paginas/dormitorios.html">Cabeceras</a></li>
-                            <li><a href="/paginas/dormitorios.html">Bases</a></li>
+                            <li><a href="paginas/catalogo.html">Ver todo</a></li>
+                            <li><a href="paginas/catalogo.html">Recámaras king size y matrimonial</a></li>
+                            <li><a href="paginas/catalogo.html">Cabeceras</a></li>
+                            <li><a href="paginas/catalogo.html">Bases</a></li>
                         </ul>
                     </div>
                 </li>
@@ -255,16 +255,16 @@
                     </a>
                     <div class="collapse" id="collapseComedores">
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="/paginas/comedores.html">Ver todo</a></li>
-                            <li><a href="/paginas/comedores.html">4 sillas</a></li>
-                            <li><a href="/paginas/comedores.html">6 sillas</a></li>
-                            <li><a href="/paginas/comedores.html">8 sillas</a></li>
+                            <li><a href="paginas/catalogo.html">Ver todo</a></li>
+                            <li><a href="paginas/catalogo.html">4 sillas</a></li>
+                            <li><a href="paginas/catalogo.html">6 sillas</a></li>
+                            <li><a href="paginas/catalogo.html">8 sillas</a></li>
                         </ul>
                     </div>
                 </li>
 
-                <li class="list-group-item"><a href="/paginas/roperos.html">Roperos</a></li>
-                <li class="list-group-item"><a href="/paginas/colchones.html">Colchones</a></li>
+                <li class="list-group-item"><a href="paginas/catalogo.html">Roperos</a></li>
+                <li class="list-group-item"><a href="paginas/catalogo.html">Colchones</a></li>
 
                 <!-- Línea Blanca -->
                 <li class="list-group-item">
@@ -274,17 +274,17 @@
                     </a>
                     <div class="collapse" id="collapseLineaBlanca">
                         <ul class="list-unstyled ps-3 mt-2">
-                            <li><a href="/paginas/lineaBlanca.html">Ver todo</a></li>
-                            <li><a href="/paginas/lineaBlanca.html">Lavadoras</a></li>
-                            <li><a href="/paginas/lineaBlanca.html">Estufas</a></li>
-                            <li><a href="/paginas/lineaBlanca.html">Refrigeradores</a></li>
-                            <li><a href="/paginas/lineaBlanca.html">Microondas</a></li>
+                            <li><a href="paginas/catalogo.html">Ver todo</a></li>
+                            <li><a href="paginas/catalogo.html">Lavadoras</a></li>
+                            <li><a href="paginas/catalogo.html">Estufas</a></li>
+                            <li><a href="paginas/catalogo.html">Refrigeradores</a></li>
+                            <li><a href="paginas/catalogo.html">Microondas</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="/paginas/ofertas.html" class="fw-bold text-danger">Ofertas</a>
+                    <a href="#ofertas" class="fw-bold text-danger">Ofertas</a>
                 </li>
             </ul>
 
@@ -292,258 +292,181 @@
 
             <!-- Enlaces adicionales -->
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="/paginas/nosotros.html">Nosotros</a></li>
-                <li class="list-group-item"><a href="/paginas/contacto.html">Contacto</a></li>
+                <li class="list-group-item"><a href="paginas/nosotros.html">Nosotros</a></li>
+                <li class="list-group-item"><a href="paginas/contacto.html">Contacto</a></li>
             </ul>
         </div>
     </div>
+    <!--FIN DE NAVBAR-->
 
-    <!-- Parte del Hero donde se insertara una imagen, fotografía, gráfico, video u otro tipo de diseño (de gran) que aparecera al inicio del sitio web -->
-   <div class="hero-container">
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="hero-content">
-          <h1 id="hero-title">Tu Hogar, Nuestra Pasión</h1>
-        </div>
-      </div>
-    </section>
+    <!--AQUI VA EL CODIGO DEL CHECKOUT-->
+    <!-- ========================================= -->
+<!-- SECCIÓN DEL CARRITO DE COMPRAS -->
+<!-- ========================================= -->
+<main class="container my-5">
+    <div class="text-center mb-4">
+        <h2>Finalizar Compra</h2>
     </div>
 
-    <!-- Texto principal en esta parte se escribe el texto sobre nosotros -->
-    <section class="about-section" id="nosotros">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <h2 class="text-center mb-4">Nuestra Historia</h2>
-            <p class="text-center mb-4">
-              Nuestra historia se remonta al señor Delgado, un artesano zapatero que recorrió gran parte de la república mexicana. Tras enfrentar diversas pérdidas en su mercancía, llegó al Estado de México, específicamente a un pueblo de origen mazahua, donde con esfuerzo y dedicación logró establecer el negocio que ha perdurado a lo largo de los años.
-            </p>
-            <p class="text-center">
-              Desde entonces, en Mueblería España mantenemos el compromiso de ofrecer muebles y línea blanca a precios accesibles sin necesidad de gastar de más. Nuestra misión es brindar opciones económicas artesanales y de marcas comerciales que se adapten a diferentes estilos de vida.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de estadísticas clave -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-4 mb-4">
-            <div class="stat-card">
-              <div class="stat-number">1995</div>
-              <div class="stat-label">Año de fundación</div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="stat-card">
-              <div class="stat-number">30+</div>
-              <div class="stat-label">Años de experiencia</div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="stat-card">
-              <div class="stat-number">San Felipe del Progreso</div>
-              <div class="stat-label">Edo. de México</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Apartado de características, texto que describe cómo lo logramos -->
-    <section class="features-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center mb-5">¿Qué nos hace diferentes?</h2>
-          </div>
-        </div>
+    <div class="row g-5">
         
-        <div class="row">
-          <!-- Primera característica -->
-          <div class="col-md-6 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-hammer"></i>
-              </div>
-              <h3>Muebles Artesanales</h3>
-              <p>Piezas únicas creadas por artesanos locales de la región mazahua, combinando tradición y calidad en cada detalle.</p>
-            </div>
-          </div>
-          
-          <!-- Segunda característica -->
-          <div class="col-md-6 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-award"></i>
-              </div>
-              <h3>Marcas Comerciales</h3>
-              <p>Distribuidores autorizados de marcas reconocidas en muebles y línea blanca, garantizando durabilidad y respaldo.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <!-- Tercera característica -->
-          <div class="col-md-6 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-cash-coin"></i>
-              </div>
-              <h3>Precios Accesibles</h3>
-              <p>Opciones económicas para todos los presupuestos, sin comprometer la calidad de tu inversión.</p>
-            </div>
-          </div>
-
-          <!-- Cuarta característica -->
-          <div class="col-md-6 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-house-heart"></i>
-              </div>
-              <h3>Adaptados a Ti</h3>
-              <p>Variedad de estilos y opciones que se ajustan a diferentes gustos y necesidades de tu hogar.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-      </section>
- 
-    <!-- Apartado (breve descripción de por qué visitarnos donde se agregan dos botones para que el cliente vea el contacto y nuestro catálogo) -->
-    <section class="cta-section" id="contacto">
-      <div class="container">
-        <h2>Visítanos y Descubre la Diferencia</h2>
-        
-        <div class="row justify-content-center">
-          <div class="col-lg-8 col-md-10">
-            <p class="mb-4">
-              Nuestro showroom está abierto para que explores nuestra colección completa y nuestro equipo estará encantado de ayudarte a encontrar las piezas perfectas para tu hogar.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Parte de los botones para el contacto y ver el catálogo -->
-        <div class="cta-buttons mt-4">
-          <a href="/paginas/contacto.html" class="btn btn-custom-primary me-3 mb-2">Contáctanos</a>
-          <a href="/paginas/catalogo.html" class="btn btn-custom-secondary mb-2">Ver Catálogo</a>
-        </div>
-      </div>
-    </section>
-
-    <!--=====EQUIPO CODE&COFFEE==========-->
-    <section class="team-section py-5 bg-light">
-      <div class="container">
-        <div class="row text-center mb-5">
-          <div class="col-12">
-            <h2 class="display-5">Conoce al Equipo de Desarrollo</h2>
-            <p class="lead">Este proyecto fue traído a la vida por el talentoso equipo de Code&Coffee.</p>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <!-- Card 1: Angélica Chin -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/DevAngelica.jpg" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Angélica Chin">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Angélica Chin Cantillo</h5>
-                <p class="text-muted mb-2">Desarrolladora Full Stack</p>
-                <p class="card-text">Apasionada por el código y la mente humana. Construyo soluciones tecnológicas intuitivas, funcionales y centradas en una genuina experiencia de usuario.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/angelica-chin/" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/ange07" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+        <div class="col-lg-7">
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-brown text-white">
+                    <h4 class="mb-0">1. Dirección de Envío y Facturación</h4>
                 </div>
-              </div>
-            </div>
-          </div>
+                <div class="card-body">
+                    <form id="checkout-form" class="row g-3">
+                        
+                        <div class="col-md-6">
+                            <label for="checkout-nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="checkout-nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="checkout-apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="checkout-apellidos" required>
+                        </div>
 
-          <!-- Card 2: Juan Emmanuel Grey Suárez -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/DevEmmanuel.jpg" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Juan Emmanuel Grey Suárez">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Juan Emmanuel Grey Suárez</h5>
-                <p class="text-muted mb-2">Desarrollador Full Stack</p>
-                <p class="card-text">Desarrollador Java Full-Stack en formación. Apasionado por crear experiencias digitales interactivas y funcionales, combinando lógica, diseño y eficiencia.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/emmanuelgrey" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/emmanuelgrey1996" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+                        <div class="col-12">
+                            <label for="checkout-calle" class="form-label">Calle y Número</label>
+                            <input type="text" class="form-control" id="checkout-calle" placeholder="Av. Siempre Viva 123" required>
+                        </div>
 
-          <!-- Card 3: Alan Uriel García Campos -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/Alan.jpg" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Alan Uriel García Campos">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Alan Uriel García Campos</h5>
-                <p class="text-muted mb-2">Desarrollador Java Full-Stack</p>
-                <p class="card-text">Desarrollador Java Jr. apasionado por crear aplicaciones web funcionales que brinden valor real a los usuarios.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/alan-garcia-campos" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/AlanGarciatech" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 4: Alberto Baltazar Ramírez -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/Alberto.jpg" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Alberto Baltazar Ramírez">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Alberto Baltazar Ramírez</h5>
-                <p class="text-muted mb-2">Desarrollador Java Full-Stack</p>
-                <p class="card-text">Desarrollador Full Stack Jr. con sólida formación en Java, JavaScript, HTML y CSS. Enfocado en desarrollar soluciones web de calidad.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/jesus-alberto-baltazar-ramirez" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/albertr808" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+                        <div class="col-12">
+                            <label for="checkout-interior" class="form-label">Departamento, Interior, etc. (Opcional)</label>
+                            <input type="text" class="form-control" id="checkout-interior" placeholder="Depto. 5A">
+                        </div>
 
-          <!-- Card 5: Leticia Janet Bermúdez Rebolledo -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/lety.png" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Leticia Janet Bermúdez Rebolledo">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Leticia Janet Bermúdez Rebolledo</h5>
-                <p class="text-muted mb-2">Desarrolladora Full-Stack</p>
-                <p class="card-text">Desarrolladora Full Stack con experiencia en proyectos web. Apasionada por crear soluciones eficientes, seguras y fáciles de usar. Comprometida con el trabajo en equipo.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/leticiabermudez/" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/lety864" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+                        <div class="col-md-6">
+                            <label for="checkout-colonia" class="form-label">Colonia</label>
+                            <input type="text" class="form-control" id="checkout-colonia" required>
+                        </div>
 
-          <!-- Card 6: Luis Humberto Hernández Butrón -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <img src="../assets/images/Luis Hernandez.png" class="card-img-top rounded-circle w-25 mx-auto mt-4" alt="Foto de Luis Humberto Hernández Butrón">
-              <div class="card-body">
-                <h5 class="card-title mb-1">Luis Humberto Hernández Butrón</h5>
-                <p class="text-muted mb-2">Desarrollador Java Full-Stack</p>
-                <p class="card-text">Desarrollador Full Stack en formación, enfocado en crear aplicaciones web robustas. Comprometido con el aprendizaje continuo y las mejores prácticas.</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/luis-humberto-hernández-butrón" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://github.com/butron0407-LHHB" class="text-dark mx-2" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+                        <div class="col-md-6">
+                            <label for="checkout-cp" class="form-label">Código Postal</label>
+                            <input type="text" class="form-control" id="checkout-cp" required>
+                        </div>
 
-        </div>
-      </div>
-    </section>
+                        <div class="col-md-6">
+                            <label for="checkout-ciudad" class="form-label">Municipio</label>
+                            <input type="text" class="form-control" id="checkout-ciudad" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="checkout-estado" class="form-label">Estado</label>
+                            <select id="checkout-estado" class="form-select" required>
+                                <option value="" selected disabled>Elegir...</option>
+                                <option value="EDOMEX">Estado de México</option>
+                                </select>
+                        </div>
+                        
+                        <hr class="my-3">
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="requiere-factura" data-bs-toggle="collapse" data-bs-target="#datos-facturacion">
+                                <label class="form-check-label" for="requiere-factura">
+                                    <strong>¿Requieres factura?</strong>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 collapse" id="datos-facturacion">
+                            <div class="row g-3 p-3 border rounded mt-2 bg-light">
+                                <h5 class="mb-2">Datos de Facturación</h5>
+                                <div class="col-md-6">
+                                    <label for="checkout-rfc" class="form-label">RFC</label>
+                                    <input type="text" class="form-control" id="checkout-rfc" placeholder="ABCD123456XYZ">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkout-razon-social" class="form-label">Razón Social</label>
+                                    <input type="text" class="form-control" id="checkout-razon-social" placeholder="Nombre de la Empresa S.A. de C.V.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkout-cfdi" class="form-label">Uso de CFDI</label>
+                                    <select id="checkout-cfdi" class="form-select">
+                                        <option value="" selected disabled>Elegir...</option>
+                                        <option value="G01">G01 - Adquisición de mercancías</option>
+                                        <option value="G03">G03 - Gastos en general</option>
+                                        <option value="I08">I08 - Otra maquinaria y equipo</option>
+                                        <option value="P01">P01 - Por definir</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkout-cp-fiscal" class="form-label">C.P. Domicilio Fiscal</label>
+                                    <input type="text" class="form-control" id="checkout-cp-fiscal" placeholder="Tu código postal fiscal">
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                </div>
+            </div> <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">2. Método de Envío</h4>
+                </div>
+                <div class="card-body">
+                    <p>Las opciones de envío aparecerán aquí cuando ingreses tu dirección.</p>
+                </div>
+            </div> <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">3. Método de Pago</h4>
+                </div>
+                <div class="card-body">
+                    <p>Elige tu método de pago.</p>
+                </div>
+            </div> <div class="d-grid">
+                <button type="submit" form="checkout-form" class="btn btn-success btn-lg">Realizar Pedido</button>
+            </div>
+
+        </div> <div class="col-lg-5">
+            <div class="card shadow-sm" style="position: sticky; top: 20px;">
+                <div class="card-header">
+                    <h4 class="mb-0">Resumen del Pedido</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Nombre del Producto 1</h6>
+                                <small class="text-muted">Cantidad: 1</small>
+                            </div>
+                        </div>
+                        <span class="fw-bold">$150.00</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                         <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Nombre del Producto 2</h6>
+                                <small class="text-muted">Cantidad: 2</small>
+                            </div>
+                        </div>
+                        <span class="fw-bold">$100.00</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal:</span>
+                        <span id="summary-subtotal">$250.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Envío:</span>
+                        <span id="summary-shipping">$50.00</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Total:</span>
+                        <span id="summary-total">$300.00</span>
+                    </div>
+
+                </div>
+            </div>
+        </div> </div> </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- ========== NUEVO FOOTER ========== -->
     <footer class="site-footer">
@@ -566,10 +489,10 @@
                     <div class="footer-widget">
                         <h4 class="widget-title">Enlaces</h4>
                         <ul class="list-unstyled">
-                            <li><a href="/paginas/nosotros.html">Sobre Nosotros</a></li>
-                            <li><a href="/paginas/catalogo.html">Catálogo</a></li>
-                            <li><a href="/paginas/contacto.html">Contacto</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="paginas/nosotros.html">Sobre Nosotros</a></li>
+                            <li><a href="paginas/catalogo.html">Catálogo</a></li>
+                            <li><a href="paginas/contacto.html">Contacto</a></li>
+                            <li><a href="paginas/login.html">Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -581,7 +504,7 @@
                         <ul class="list-unstyled">
                             <li><a href="/paginas/preguntas.html">Preguntas Frecuentes</a></li>
                             <li><a href="#">Métodos de Pago</a></li>
-                            <li><a href="#">Políticas y Garantías</a></li>
+                            <li><a href="paginas/garantia.html">Políticas y Garantías</a></li>
                         </ul>
                     </div>
                 </div>
@@ -615,7 +538,7 @@
             <p class="mb-0">&copy; 2025 Mueblería España. Todos los derechos reservados.</p>
         </div>
     </div>
-     <!-- Incio de sesion -->
+    <!-- Incio de sesion -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -830,9 +753,11 @@
 </div> 
 <!-- Fin de form de registro -->
 
-  <!-- Bootstrap 5 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="../scripts/nosotros.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <script src="/scripts/carrito-global.js" defer></script>
+    <script src="/scripts/checkout.js" defer></script>
+    
   <!-- Enlazar el archivo JavaScript -->
 <script src="/scripts/registro.js"></script>
     <script src="/scripts/login.js"></script>
