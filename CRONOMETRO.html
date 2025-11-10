@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro de Presentación - 12 minutos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #73917A 0%, #5E503F 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #73917A;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #686763;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .timer {
+            font-size: 6em;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+            font-variant-numeric: tabular-nums;
+            font-family: 'Courier New', monospace;
+            color: #5E503F;
+        }
+
+        .timer.warning {
+            color: #CB997E;
+        }
+
+        .timer.danger {
+            color: #c0392b;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #73917A 0%, #CB997E 100%);
+            transition: width 0.3s ease, background 0.3s ease;
+            border-radius: 15px;
+        }
+
+        .progress-fill.warning {
+            background: linear-gradient(90deg, #CB997E 0%, #e67e22 100%);
+        }
+
+        .progress-fill.danger {
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-start {
+            background: #73917A;
+            color: white;
+        }
+
+        .btn-pause {
+            background: #CB997E;
+            color: white;
+        }
+
+        .btn-reset {
+            background: #686763;
+            color: white;
+        }
+
+        .sections {
+            margin-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 30px;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .section.active {
+            background: linear-gradient(90deg, #73917A 0%, #5E503F 100%);
+            color: white;
+            font-weight: 600;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(115, 145, 122, 0.3);
+        }
+
+        .section-name {
+            flex: 1;
+        }
+
+        .section-person {
+            flex: 1;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .section-time {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .status.normal {
+            background: #d5e8d4;
+            color: #2d5016;
+        }
+
+        .status.warning {
+            background: #ffe6cc;
+            color: #994c00;
+        }
+
+        .status.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            border-left: 4px solid #73917A;
+        }
+
+        .instructions h3 {
+            color: #73917A;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .instructions li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .instructions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #73917A;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .timer {
+                font-size: 4em;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+
+            button {
+                padding: 12px 24px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⏱️ Cronómetro de Presentación</h1>
+        <p class="subtitle">Mueblería España - 12 minutos</p>
+
+        <div class="timer" id="timer">12:00</div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="status normal" id="status">
+            🟢 Listo para comenzar
+        </div>
+
+        <div class="controls">
+            <button class="btn-start" id="startBtn" onclick="startTimer()">▶️ Iniciar</button>
+            <button class="btn-pause" id="pauseBtn" onclick="pauseTimer()" disabled>⏸️ Pausar</button>
+            <button class="btn-reset" onclick="resetTimer()">🔄 Reiniciar</button>
+        </div>
+
+        <div class="sections">
+            <h3 style="color: #73917A; margin-bottom: 15px; text-align: center;">Secciones de la Presentación</h3>
+            <div class="section" data-start="0" data-end="90" id="section1">
+                <span class="section-name">1. Introducción</span>
+                <span class="section-person">Angelica</span>
+                <span class="section-time">1.5 min</span>
+            </div>
+            <div class="section" data-start="90" data-end="270" id="section2">
+                <span class="section-name">2. Frontend - Cliente</span>
+                <span class="section-person">Emmanuel + Alan</span>
+                <span class="section-time">3.0 min</span>
+            </div>
+            <div class="section" data-start="270" data-end="420" id="section3">
+                <span class="section-name">3. Frontend - Admin</span>
+                <span class="section-person">Lety</span>
+                <span class="section-time">2.5 min</span>
+            </div>
+            <div class="section" data-start="420" data-end="570" id="section4">
+                <span class="section-name">4. Backend</span>
+                <span class="section-person">Alberto</span>
+                <span class="section-time">2.5 min</span>
+            </div>
+            <div class="section" data-start="570" data-end="660" id="section5">
+                <span class="section-name">5. Integración</span>
+                <span class="section-person">Humberto</span>
+                <span class="section-time">1.5 min</span>
+            </div>
+            <div class="section" data-start="660" data-end="720" id="section6">
+                <span class="section-name">6. Conclusiones</span>
+                <span class="section-person">Angelica</span>
+                <span class="section-time">1.0 min</span>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 Instrucciones</h3>
+            <ul>
+                <li>Click en "Iniciar" al comenzar la presentación</li>
+                <li>La sección actual se destacará en verde</li>
+                <li>Color naranja = quedan 2 minutos</li>
+                <li>Color rojo = último minuto (¡apurarse!)</li>
+                <li>Usa "Pausar" solo en emergencias</li>
+                <li>Mantén esta ventana visible en una segunda pantalla o tablet</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let totalSeconds = 720; // 12 minutos = 720 segundos
+        let currentSeconds = totalSeconds;
+        let interval = null;
+        let isPaused = false;
+
+        const timerDisplay = document.getElementById('timer');
+        const progressBar = document.getElementById('progress');
+        const statusDiv = document.getElementById('status');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+
+        function updateDisplay() {
+            const minutes = Math.floor(currentSeconds / 60);
+            const seconds = currentSeconds % 60;
+            timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Update progress bar
+            const progress = ((totalSeconds - currentSeconds) / totalSeconds) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Update colors based on time remaining
+            if (currentSeconds <= 60) {
+                timerDisplay.classList.add('danger');
+                timerDisplay.classList.remove('warning');
+                progressBar.classList.add('danger');
+                progressBar.classList.remove('warning');
+                statusDiv.className = 'status danger';
+                statusDiv.textContent = '🔴 ¡ÚLTIMO MINUTO! Ir al cierre';
+            } else if (currentSeconds <= 120) {
+                timerDisplay.classList.add('warning');
+                timerDisplay.classList.remove('danger');
+                progressBar.classList.add('warning');
+                progressBar.classList.remove('danger');
+                statusDiv.className = 'status warning';
+                statusDiv.textContent = '🟡 Quedan 2 minutos - Preparar cierre';
+            } else {
+                timerDisplay.classList.remove('warning', 'danger');
+                progressBar.classList.remove('warning', 'danger');
+                statusDiv.className = 'status normal';
+                statusDiv.textContent = '🟢 Tiempo suficiente - Continuar';
+            }
+
+            // Highlight current section
+            const elapsed = totalSeconds - currentSeconds;
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const start = parseInt(section.dataset.start);
+                const end = parseInt(section.dataset.end);
+                if (elapsed >= start && elapsed < end) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Play sound when time is up
+            if (currentSeconds === 0) {
+                clearInterval(interval);
+                statusDiv.className = 'status danger';
+                statusDiv.textContent = '⏰ ¡TIEMPO TERMINADO!';
+                playAlert();
+            }
+        }
+
+        function startTimer() {
+            if (!interval) {
+                interval = setInterval(() => {
+                    if (currentSeconds > 0) {
+                        currentSeconds--;
+                        updateDisplay();
+                    }
+                }, 1000);
+
+                startBtn.disabled = true;
+                pauseBtn.disabled = false;
+                statusDiv.className = 'status normal';
+                statusDiv.textContent = '▶️ Presentación en curso...';
+            }
+        }
+
+        function pauseTimer() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+                startBtn.textContent = '▶️ Reanudar';
+                statusDiv.className = 'status warning';
+                statusDiv.textContent = '⏸️ Presentación pausada';
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            interval = null;
+            currentSeconds = totalSeconds;
+            updateDisplay();
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+            startBtn.textContent = '▶️ Iniciar';
+            statusDiv.className = 'status normal';
+            statusDiv.textContent = '🟢 Listo para comenzar';
+
+            // Remove all active sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        }
+
+        function playAlert() {
+            // Try to play a sound (will only work if user has interacted with the page)
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        // Initialize display
+        updateDisplay();
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                if (!interval) {
+                    startTimer();
+                } else {
+                    pauseTimer();
+                }
+            } else if (e.code === 'KeyR') {
+                resetTimer();
+            }
+        });
+    </script>
+</body>
+</html>
